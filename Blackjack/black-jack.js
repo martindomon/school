@@ -17,12 +17,11 @@ let player = [];
 let outputArea = document.getElementById("output-area"),
 	newGameButton = document.getElementById("new-game-button"),
 	hitButton = document.getElementById("hit-button"),
-    stayButton = document.getElementById("stay-button"),
-    winnerArea = document.getElementById("winner-area");
+    	stayButton = document.getElementById("stay-button"),
+   	winnerArea = document.getElementById("winner-area");
 
 let playerScore = 0,
     dealerScore = 0;
-	
 let result = '';
 
 function shuffleDeck () {
@@ -40,13 +39,11 @@ function shuffleDeck () {
 
 newGameButton.addEventListener('click', function () {
 	startNewGame();
-	
 });
 
 hitButton.addEventListener('click', function(){
 	dealAnotherCard(player);
 	showHands();
-
 });
 
 stayButton.addEventListener('click', function() {
@@ -59,31 +56,21 @@ stayButton.addEventListener('click', function() {
 	}
 });
 
-
-
-
 function drawCard() {
 	return deck.shift();
 }
 
-
-
-
 deck.forEach(card => result += `${card.card}` ); 
 
 function ShowHandPlayer(hand, score) {
-
 	let cards = '';
-
 	for (let i = 0; i < hand.length; i++)
 		cards += hand[i].card + ' ';
 
 	outputArea.innerText += 'Player: ' +  cards + '' + score + '\n';
 }
 function ShowHandDealer(hand, score) {
-
 	let cards = '';
-
 	for (let i = 0; i < hand.length; i++)
 		cards += hand[i].card + ' ';
 
@@ -91,9 +78,7 @@ function ShowHandDealer(hand, score) {
 }
 
 function dealInitialCards() {
-
 	clearTable();
-
 	player.push(drawCard());
 	player.push(drawCard());
 	dealer.push(drawCard());
@@ -103,9 +88,8 @@ function dealInitialCards() {
 	dealerScore = calculateHand(dealer);
 
 	ShowHandDealer(dealer, dealerScore);
-    ShowHandPlayer(player, playerScore);
-    
-    calculateHand(player);
+   	ShowHandPlayer(player, playerScore);
+    	calculateHand(player);
     
 }
 
@@ -122,52 +106,36 @@ function calculateHand(cards) {
 	return score;
 }
 
-
 function clearTable() {
-
 	outputArea.innerText = '';
 }
-
-
 
 function startNewGame() {
 	newGameButton.style.display = 'none';
 	hitButton.style.display = 'inline';
 	stayButton.style.display = 'inline';
-
-	
 	player = [];
 	dealer = [];
 	clearTable();
 	shuffleDeck();
 	dealInitialCards();
 	winnerArea.innerText = '';
-
 }
 
 function dealAnotherCard(hand) {
 	hand.push(drawCard());
 }
 
-
-
 function showHands(stayed = false) {
-
 	playerScore = calculateHand(player);
 	dealerScore = calculateHand(dealer);
-
 	clearTable();
-
 	ShowHandDealer(dealer, dealerScore);
 	ShowHandPlayer(player, playerScore);
-
 	winner = determineWinner(stayed);
 	winnerArea.innerText = winner;
-
 	if(winner !=='') hideGameButtons();
 }
-
-
 
 function hasBlackJack(hand, score) {
     if(hand.length === 2 && score === 21)
@@ -175,7 +143,6 @@ function hasBlackJack(hand, score) {
 }
 
 function isBust(score) {
-
     if(score > 21)
      	return true;
 }
