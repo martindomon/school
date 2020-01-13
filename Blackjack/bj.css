@@ -1,0 +1,53 @@
+/*
+                        SETUP
+*/
+body {
+    background-color: rgb(14, 117, 0);
+}
+
+#wrapper {
+    text-align:center;
+}
+
+#wrapper-center {
+    display:inline-block;
+}
+
+h1 {
+    font-size: 50px;
+    color: whitesmoke;
+}
+
+/* 
+                        OUTPUT AREA(Cards)
+*/
+#table {
+    font-size: 80px;
+    border-radius: 10px;
+    background-color: aliceblue;
+    padding: 30px;
+    width: 800px;
+    height:  280px;
+}
+
+#winner-area {
+    
+    font-size: 30px;
+}
+
+/*
+                        BUTTONS
+*/
+#new-game-button,
+#hit-button,
+#stay-button {
+
+    background-color: whitesmoke;
+    border-radius: 10px;
+    padding: 10px 30px;
+    margin-top: 20px;
+
+}
+
+
+
